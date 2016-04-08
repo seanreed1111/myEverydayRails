@@ -25,7 +25,7 @@ module MyEverydayRails
 
     # generators for RSpec suggested by Everyday Rails testing with RSpec
     config.generators do |g|
-        g.test_framework :rspec
+        g.test_framework :rspec,
             fixtures: true,
             view_specs: false,
             helper_specs: false,
