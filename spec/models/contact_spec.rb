@@ -46,5 +46,12 @@ describe Contact do
       email: 'aaron@aaron.com')
     expect(duplicateEmail).not_to be_valid
   end
-  it "returns a contact's full name as a string"
+  it "#name returns a contact's full name as a string" do
+    contact = Contact.new(
+      firstname: 'Aaron',
+      lastname: 'Sumner',
+      email: 'aaron@aaron.com')
+    expect(contact.name).to eq "Aaron Sumner"
+  end
+
 end
