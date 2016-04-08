@@ -3,6 +3,57 @@
 require "rails_helper"
 
 describe Contact do
+  it "returns a sorted array of results that match" do
+    smith = Contact.create(
+      firstname: 'John',
+      lastname: 'smith',
+      email: 'johnsmith@email.com')
+
+    johnson = Contact.create(
+      firstname: 'Tim',
+      lastname: 'Johnson',
+      email: 'tj@roar.com')
+
+    jones = Contact.create(
+      firstname: 'Tim',
+      lastname: 'Jones',
+      email: 'timmy@timmy.com')
+
+
+    expect(Contact.by_letter("J")).to eq [johnson, jones]
+  end
+
+  it "omits results that do not match" do
+    smith = Contact.create(
+      firstname: 'John',
+      lastname: 'smith',
+      email: 'johnsmith@email.com')
+
+    johnson = Contact.create(
+      firstname: 'Tim',
+      lastname: 'Johnson',
+      email: 'tj@roar.com')
+
+    jones = Contact.create(
+      firstname: 'Tim',
+      lastname: 'Jones',
+      email: 'timmy@timmy.com')
+    expect(Contact.by_letter("J")).not_to include smith
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #first six
   it "is valid with a firstname, lastname and email" do
     contact = Contact.new(
       firstname: 'Aaron',
